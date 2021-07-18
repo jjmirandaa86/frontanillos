@@ -5,15 +5,10 @@ import { getUser } from "./Library/Redux/Actions/UserActions";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Library/i18n";
-import Cargando from "./Components/App/Vistas/Cargando";
-import Login from "./Components/App/Vistas/Login";
-
-import AlertaInformativa from "./Components/App/Vistas/Alertas/AlertaInformativa";
-import Error404 from "./Components/App/Page/Error404";
-import Main from "./Components/App/Vistas/Main";
-import Barras from "./Components/App/Graficos/Barras";
-import PruebaRedux from "./Components/PruebaRedux";
+import Cargando from "./Components/View/share/Cargando";
+import ExpensiveGraphics from "./Components/View/Graphics/ExpensiveGraphics";
+import MainMain from "./Components/View/main/MainMain";
+import Expensive from "./Components/View/main/Expensive";
 
 function App() {
   const [isAuth, setIsAuth] = useState(null);
@@ -35,14 +30,16 @@ function App() {
       <Suspense fallback={<Cargando />}>
         <Router>
           <Switch>
-            <Route exact path="/prueba" children={<PruebaRedux />} />
+            <Route exact path="/" children={<Expensive />} />
+            <Route exact path="/main" children={<MainMain />} />
 
-            <Route exact path="/barras" children={<Barras />} />
+            {/* <Route exact path="/barras" children={<Barras />} />
+            <Route exact path="/prueba" children={<PruebaRedux />} />
 
             <Route exact path="/login" children={<Login />} />
             <Route exact path="/" children={<Login />} />
             <Route exact path="/main" children={<Main />} />
-            <Route path="*" component={Error404} />
+            <Route path="*" component={Error404} /> */}
           </Switch>
 
           {/* <ProtectedRoute path="/mapa" component={Mapa} isAuth={isAuth} /> */}

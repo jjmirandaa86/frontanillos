@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Card, Alert } from "react-bootstrap";
 import { useTranslation } from "react-i18next"; //Traducciones
 //Componentes Grafico UI
-import Fondo from "../Vistas/Formulario/Fondo";
-import Logo from "../Vistas/Logo";
+import Fondo from "../share/Fondo";
+import Logo from "../share/Logo";
 
 const Error404 = () => {
   const { t } = useTranslation();

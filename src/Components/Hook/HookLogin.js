@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../../Library/Redux/Actions/UserActions";
+import { setUser } from "../../Library/Redux/Actions/UserActions";
 
 export const HookLogin = (initialForm, validationsForm) => {
   const [form, setForm] = useState(initialForm);

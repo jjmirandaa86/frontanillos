@@ -8,7 +8,6 @@ i18n
   .init({
     lng: "es",
     backend: {
-      /* translation file path */
       loadPath: "/Json/{{ns}}/{{lng}}.json",
     },
     fallbackLng: "en",

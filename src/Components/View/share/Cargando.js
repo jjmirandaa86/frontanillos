@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Spinner } from "react-bootstrap";
 
-export default function Cargando(props) {
+export default function Cargando() {
   return (
     <>
       <div>

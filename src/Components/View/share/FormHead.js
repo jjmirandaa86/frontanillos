@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 
-import Language from "../Formulario/Language";
-import Logo from "../Logo";
+import Language from "./Language";
+import Logo from "./Logo";
 
-export default function CabeceraFormulario(props) {
+export default function FormHead() {
   return (
     <>
       <Card.Header>

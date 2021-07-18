@@ -2,17 +2,16 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { HookLogin } from "../Hook/HookLogin";
-import * as CONSTANTE from "../../../Helpers/Constantes"; //Constantes
-import { getHoraActual } from "../../../Helpers/funciones";
+import { HookLogin } from "../../Hook/HookLogin";
+import * as CONSTANTE from "../../../Helpers/Constantes";
 
 //Componentes Grafico UI
-import Cargando from "../Vistas/Cargando";
-import Fondo from "../Vistas/Formulario/Fondo";
-import LoginForm from "./Formulario/LoginForm";
-import PieFormulario from "./Formulario/PieFormulario";
-import CabeceraFormulario from "./Formulario/CabeceraFormulario";
-import AlertaInformativa from "./Alertas/AlertaInformativa";
+import Cargando from "../share/Cargando";
+import Fondo from "../share/Fondo";
+import LoginForm from "./LoginForm";
+import FormFooter from "../share/FormFooter";
+import FormHead from "../share/FormHead";
+import AlertaInformativa from "../share/AlertaInformativa";
 
 //Parametros por de los datos.
 const initialForm = {
@@ -60,7 +59,7 @@ const Login = () => {
       {alerta && (
         <AlertaInformativa
           titulo={process.env.REACT_APP_SERVIDOR_TITULO_API}
-          fechaHora={getHoraActual()}
+          fechaHora={"11111"}
           mensaje={mensajeAlerta}
           estado={alerta}
         />
@@ -84,7 +83,7 @@ const Login = () => {
                   : "white"
               }
             >
-              <CabeceraFormulario />
+              <FormHead />
               <Card.Body>
                 <Card.Title className="text-center">
                   {t("app.componente.login.titulo")}
@@ -99,7 +98,7 @@ const Login = () => {
                   />
                 </Card.Text>
               </Card.Body>
-              <PieFormulario />
+              <FormFooter />
             </Card>
           </div>
         </div>
