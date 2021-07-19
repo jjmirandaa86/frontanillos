@@ -10,7 +10,7 @@ export default function Logo(props) {
 
   return (
     <>
-      <Card.Img variant="top" src={logo} style={{ width: props.pwidth }} />
+      <Card.Img variant="top" src={logo} style={{ width: props.pwidth }} />{" "}
     </>
   );
 }
