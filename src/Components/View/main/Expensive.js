@@ -2,9 +2,10 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { HookExpensive } from "../../Hook/HookExpensive";
 import ExpensiveItem from "./ExpensiveItem";
+import PaginationTable from "./PaginationTable";
 
 const Expensive = () => {
-  const { dato, datoHead } = HookExpensive();
+  const { dato, datoHead, datoPagination, handleChangeUrl } = HookExpensive();
   console.log(dato);
   return (
     <>
@@ -23,6 +24,10 @@ const Expensive = () => {
           <ExpensiveItem data={dato} />
         </tbody>
       </Table>
+      <PaginationTable
+        data={datoPagination}
+        handleChangeUrl={handleChangeUrl}
+      />
     </>
   );
 };

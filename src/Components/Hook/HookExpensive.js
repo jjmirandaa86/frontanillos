@@ -5,6 +5,8 @@ export const HookExpensive = () => {
   const r_api_token =
     "WeKHSYaSd1aLTd0K4Qz77kcallnDzyPTmkKKa702SA5L9YEGTfHI8Nbz6LNEJq7Sg55OvbzxUzNHRKGwrGO8xZ2BeR8ehqMSziG8SRJ4QsLASyrBHebqlpSeP61nCNTr8arijxzFRMeRQgl14lk0McXold34LHPiBJU4a9ZWBvsCmglPnbD5MAqfAcDS3Q8cHDOMY9Mmvgpq0CEwFhwHwDPpLgPlGfO7F9S9cQ67cmcpuRNbpFKp97YHphkICll"; //useSelector((state) => state.usuario.dato.api_token);
   const [dato, setDato] = useState([]);
+  const [url, setUrl] = useState(process.env.REACT_APP_EXPENSE_POST_USER_DATE);
+  const [datoPagination, setDatoPagination] = useState([]);
   const [datoHead, setDatoHead] = useState({
     idExpense: "Gasto",
     idCountry: "Pais",
@@ -27,8 +29,6 @@ export const HookExpensive = () => {
     dateFirst: "2020-01-01",
     dateEnd: "2021-07-30",
   };
-
-  let url = process.env.REACT_APP_EXPENSE_POST_USER_DATE;
 
   const cabeceraAxios = {
     method: "post",
@@ -53,6 +53,18 @@ export const HookExpensive = () => {
         if (response.status === 200) {
           if (response.data.data) {
             setDato(response.data.data);
+            setDatoPagination({
+              currentPage: response.data.current_page,
+              fromPage: response.data.current_page,
+              lastPage: response.data.last_page,
+              perPage: response.data.per_page,
+              toPage: response.data.to,
+              totalPage: response.data.total,
+              firstPageUrl: response.data.first_page_url,
+              prevPageUrl: response.data.prev_page_url,
+              nextPageUrl: response.data.next_page_url,
+              lastPageUrl: response.data.last_page_url,
+            });
           } else {
             setDato([]);
           }
@@ -64,10 +76,16 @@ export const HookExpensive = () => {
         console.log("Catch API >>" + e);
       })
       .finally(() => {});
-  }, []);
+  }, [url]);
+
+  const handleChangeUrl = (newUrl) => {
+    setUrl(newUrl);
+  };
 
   return {
     dato,
     datoHead,
+    datoPagination,
+    handleChangeUrl,
   };
 };

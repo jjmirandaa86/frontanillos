@@ -6,9 +6,9 @@ const ExpensiveCard = (props) => {
     <>
       <div className="container">
         <div className="vh-100 justify-content-center align-items-center formLogin">
-          <div className="bg-light p-3">
+          <div className="bg-dark p-3">
             <CloseButton onClick={() => props.setIsHovering(false)} />
-            <Card className="text-center">
+            <Card className="text-center" bg={"dark"}>
               <Card.Header>
                 Factura {" | "} {props.data.serieInvoice} {" | "}{" "}
                 {props.data.idSupplier}

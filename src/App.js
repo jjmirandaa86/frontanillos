@@ -6,9 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cargando from "./Components/View/share/Cargando";
-import ExpensiveGraphics from "./Components/View/Graphics/ExpensiveGraphics";
 import MainMain from "./Components/View/main/MainMain";
-import Expensive from "./Components/View/main/Expensive";
+import NewTable from "./Components/View/main/NewTable";
 
 function App() {
   const [isAuth, setIsAuth] = useState(null);
@@ -30,7 +29,7 @@ function App() {
       <Suspense fallback={<Cargando />}>
         <Router>
           <Switch>
-            <Route exact path="/" children={<Expensive />} />
+            <Route exact path="/table" children={<NewTable />} />
             <Route exact path="/main" children={<MainMain />} />
 
             {/* <Route exact path="/barras" children={<Barras />} />
