@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cargando from "./Components/View/share/Cargando";
 import MainMain from "./Components/View/main/MainMain";
 import TypeExpensive from "./Components/View/Expensive/TypeExpensive";
+import NewExpensive from "./Components/View/Expensive/NewExpensive";
 
 function App() {
   const [isAuth, setIsAuth] = useState(null);
@@ -29,7 +30,7 @@ function App() {
       <Suspense fallback={<Cargando />}>
         <Router>
           <Switch>
-            <Route exact path="/type" children={<TypeExpensive />} />
+            <Route exact path="/new" children={<NewExpensive />} />
             <Route exact path="/main" children={<MainMain />} />
 
             {/* <Route exact path="/barras" children={<Barras />} />

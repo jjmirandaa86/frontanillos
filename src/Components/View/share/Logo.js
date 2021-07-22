@@ -3,9 +3,9 @@ import { Card } from "react-bootstrap";
 export default function Logo(props) {
   let logo = "";
   if (props.nameDoc) {
-    logo = "/Media/img/" + props.nameDoc;
+    logo = "/Media/Img/" + props.nameDoc;
   } else {
-    logo = "/Media/img/tesalia-cbc-logo-new.png";
+    logo = "/Media/Img/tesalia-cbc-logo-new.png";
   }
 
   return (
