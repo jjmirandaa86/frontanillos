@@ -1,0 +1,7 @@
+{
+    "route": {
+        "REACT_APP_EXPENSE": "",
+        "REACT_APP_EXPENSE_POST_SAVE": "http://localhost/apianillos/public/api/expense",
+        "REACT_APP_EXPENSE_POST_SAVE_IMAGE": "http://localhost/apianillos/public/api/expense/upload"
+    }    
+}

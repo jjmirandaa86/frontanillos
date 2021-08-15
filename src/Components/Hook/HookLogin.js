@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../Library/Redux/Actions/UserActions";
+import { setUser } from "../../Library/Redux/Reducers/userReducers";
 
 export const HookLogin = (initialForm, validationsForm) => {
   const [form, setForm] = useState(initialForm);
@@ -65,12 +65,11 @@ export const HookLogin = (initialForm, validationsForm) => {
       setLoading(true);
       axios(requestAxios)
         .then((response) => {
-          console.log(response);
           if (response.status === 200) {
             if (response.data.user) {
               setMensajeAlerta(response.data.msg);
               //Asigno el toquen a variable en redux
-              dispatch(setUser(response.data.user));
+              //dispatch(setUser(response.data.user));
               /* dispatch(setUsuarios(response.data.location));
               dispatch(setUsuarios(response.data.money));
               dispatch(setUsuarios(response.data.session)); */

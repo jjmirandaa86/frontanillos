@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const RowPerPage = (props) => {
-  console.log(props.data);
-
   const ListPagination = () => (
     <>
       <Container fluid="sm">

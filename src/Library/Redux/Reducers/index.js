@@ -1,15 +1,24 @@
 import { combineReducers } from "redux";
 
-import { configurationReducer } from "./configurationReducer";
+import { languageReducers } from "./languageReducers";
+import { contadorReducers } from "./contadorReducers";
+import { userReducers } from "./userReducers";
+
+/* import { configurationReducer } from "./configurationReducer";
 import { locationReducer } from "./locationReducer";
 import { userReducer } from "./userReducer";
-import { sessionReducer } from "./sessionReducer";
+import { sessionReducer } from "./sessionReducer"; */
 
 const reducers = combineReducers({
-  user: userReducer,
+  //contador: contadorReducers,
+  settings: languageReducers,
+  user: userReducers,
+
+  /*language: languageReducers,
+   user: userReducer,
   session: sessionReducer,
   configuration: configurationReducer,
-  location: locationReducer,
+  location: locationReducer, */
 });
 
 export default reducers;

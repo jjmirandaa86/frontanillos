@@ -1,15 +1,6 @@
-import { ActionTypes } from "../Constants/ActionTypes";
-
-export const setUser = (user) => {
-  return {
-    type: ActionTypes.SET_USER,
-    payload: user,
-  };
-};
-
-export const getUser = (user) => {
-  return {
-    type: ActionTypes.GET_USER,
-    payload: user,
-  };
+export const TYPES = {
+  INICIALIZA: "INICIALIZA",
+  API_BUSCAR_USUARIO: "API_BUSCAR_USUARIO",
+  API_MODIFICAR_USUARIO: "API_MODIFICAR_USUARIO",
+  API_CAMBIAR_CLAVE_USUARIO: "API_CAMBIAR_CLAVE_USUARIO",
 };

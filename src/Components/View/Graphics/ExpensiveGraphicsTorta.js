@@ -1,29 +1,32 @@
+import { Container } from "react-bootstrap";
 import { Chart } from "react-google-charts";
 import { HookExpensiveGraphicsTorta } from "../../Hook/HookExpensiveGraphicsTorta";
 import Cargando from "../share/Cargando";
 
-const ExpensiveGraphicsTorta = () => {
-  const { datos, titleGraphics } = HookExpensiveGraphicsTorta();
+const ExpensiveGraphicsTorta = (props) => {
+  const { datos, titleGraphics } = HookExpensiveGraphicsTorta(props);
 
   return (
     <>
-      <div className="container">
-        <Chart
-          width={"500"}
-          height={"500"}
-          chartType="PieChart"
-          loader={
-            <div>
-              <Cargando />
-            </div>
-          }
-          data={datos}
-          options={{
-            title: titleGraphics,
-          }}
-          rootProps={{ "data-testid": "1" }}
-        />
-      </div>
+      <Container>
+        {datos.length === 1 ? (
+          ""
+        ) : (
+          <Chart
+            chartType="PieChart"
+            loader={
+              <div>
+                <Cargando />
+              </div>
+            }
+            data={datos}
+            options={{
+              title: titleGraphics,
+            }}
+            rootProps={{ "data-testid": "1" }}
+          />
+        )}
+      </Container>
     </>
   );
 };

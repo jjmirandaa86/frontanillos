@@ -27,7 +27,7 @@ export const HookExpensive = () => {
     idCountry: "EC",
     idUser: 500857,
     dateFirst: "2020-01-01",
-    dateEnd: "2021-07-30",
+    dateEnd: "2021-08-30",
   };
 
   const cabeceraAxios = {
@@ -47,8 +47,6 @@ export const HookExpensive = () => {
   useEffect(() => {
     axios(cabeceraAxios)
       .then((response) => {
-        console.log(">>>>>>>>>>>>>>");
-        console.log(response);
         //Si consulta con exito
         if (response.status === 200) {
           if (response.data.data) {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Icon from "../share/Icon";
 import ExpensiveCard from "./ExpensiveCard";
-import { Link, Row, Col } from "react-bootstrap";
+import { ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 
 const ExpensiveItem = (data) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -9,29 +9,46 @@ const ExpensiveItem = (data) => {
 
   const ListData = () => (
     <>
-      {data.data.map((element) => (
-        <tr key={element.idExpense}>
-          <td>{element.serieInvoice}</td>
-          <td>{element.dateInvoice}</td>
-          <td>{Number(element.amount)}</td>
-          <td>{element.idTypeEntry}</td>
-          {/* <td>{new Date(element.created_at).toLocaleDateString("fr-CA")}</td> */}
-          <td>{element.state}</td>
-          <td>
-            <label
-              onClick={() => {
-                setIsHovering(true);
-                setDatoExpensive(element);
-              }}
-            >
-              <Icon img={"/Media/Ico/search.svg"} />
-            </label>
-            <label>
-              <Icon img={"/Media/Ico/edit.svg"} />
-            </label>
-          </td>
-        </tr>
-      ))}
+      {data.data.map((element) => {
+        return (
+          <tr key={element.idExpense}>
+            <td>{element.serieInvoice}</td>
+            <td>{element.dateInvoice}</td>
+            <td>$ {Number.parseFloat(element.amount).toFixed(2)}</td>
+            <td>{element.typeEntryName}</td>
+            <td>{element.stateName}</td>
+            <td>
+              <ToggleButtonGroup type="checkbox" id={element.idExpense}>
+                <ToggleButton
+                  id={"id" + element.idExpense + 1}
+                  key={"key" + element.idExpense + 1}
+                  value={1}
+                  variant="outline-primary"
+                  onClick={() => {
+                    setIsHovering(true);
+                    setDatoExpensive(element);
+                  }}
+                >
+                  <Icon img={"/Media/Ico/search.svg"} />
+                </ToggleButton>
+                <ToggleButton
+                  id={"id" + element.idExpense + 2}
+                  key={"key" + element.idExpense + 2}
+                  value={2}
+                  variant="outline-primary"
+                  onClick={() => {
+                    setIsHovering(true);
+                    setDatoExpensive(element);
+                  }}
+                  disabled={element.state === "I" ? false : true}
+                >
+                  <Icon img={"/Media/Ico/edit.svg"} />
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
 

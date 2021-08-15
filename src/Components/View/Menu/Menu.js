@@ -1,22 +1,24 @@
-import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
-import Icon from "./Icon";
-import Logo from "./Logo";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import Icon from "../share/Icon";
+import Logo from "../share/Logo";
 
-const NavMain = () => {
+const Menu = (props) => {
   return (
     <>
       {" "}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Logo />
+          <div onClick={() => props.setShowWindow("M")}>
+            <Logo />
+          </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">
+              <Nav.Link href="#new" onClick={() => props.setShowWindow("N")}>
                 <Icon img={"/Media/Ico/add.svg"} xheight={10} xwidth={10} />{" "}
                 {" Nuevo"}
               </Nav.Link>
-              <Nav.Link href="#home">
+              <Nav.Link href="#home" onClick={() => props.setShowWindow("F")}>
                 <Icon
                   img={"/Media/Ico/controls3.svg"}
                   xheight={10}
@@ -25,7 +27,10 @@ const NavMain = () => {
                 {" Busqueda"}
               </Nav.Link>
               <NavDropdown title="Opciones" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.3">
+                <NavDropdown.Item
+                  href="#action/3.3"
+                  onClick={() => props.setShowWindow("U")}
+                >
                   <Icon img={"/Media/Ico/idCard3.svg"} />
                   {" jmiranda@cbc.co"}
                 </NavDropdown.Item>
@@ -47,4 +52,4 @@ const NavMain = () => {
   );
 };
 
-export default NavMain;
+export default Menu;

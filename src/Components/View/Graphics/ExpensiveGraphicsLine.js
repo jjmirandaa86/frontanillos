@@ -1,11 +1,11 @@
 import { Container } from "react-bootstrap";
 import { Chart } from "react-google-charts";
-import { HookExpensiveGraphics } from "../../Hook/HookExpensiveGraphics";
+import { HookExpensiveGraphicsLine } from "../../Hook/HookExpensiveGraphicsLine";
 import Cargando from "../share/Cargando";
 
-const ExpensiveGraphics = (props) => {
+const ExpensiveGraphicsLine = (props) => {
   const { datos, titleGraphics, titleGraphicsX, titleGraphicsY } =
-    HookExpensiveGraphics(props);
+    HookExpensiveGraphicsLine(props);
 
   return (
     <>
@@ -15,14 +15,17 @@ const ExpensiveGraphics = (props) => {
         ) : (
           <>
             <Chart
-              chartType="BarChart"
+              chartType="LineChart"
               loader={<Cargando />}
               data={datos}
               options={{
-                title: titleGraphics,
-                vAxis: { title: titleGraphicsX },
-                hAxis: { title: titleGraphicsY },
                 legend: { position: "none" },
+                hAxis: {
+                  title: "Mes",
+                },
+                vAxis: {
+                  title: "Cantidad",
+                },
               }}
             />
           </>
@@ -32,4 +35,4 @@ const ExpensiveGraphics = (props) => {
   );
 };
 
-export default ExpensiveGraphics;
+export default ExpensiveGraphicsLine;

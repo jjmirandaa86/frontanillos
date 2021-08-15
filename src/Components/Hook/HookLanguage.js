@@ -1,29 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect, useReducer } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { ROUTES } from "../../RoutesFront/RoutesApi";
+import { TYPES } from "../../Library/Redux/Actions/languageActions";
+import {
+  languageInitialState,
+  languageReducers,
+} from "../../Library/Redux/Reducers/languageReducers";
 
 export const HookLanguage = () => {
   const { i18n } = useTranslation();
+  //const language = useSelector((state) => state.language);
+  //const dispatch = useDispatch();
+  //const [state, dispatch] = useReducer(languageReducers, languageInitialState);
 
-  const initialForm = [
-    {
-      idLanguage: 2,
-      name: "English",
-      shortName: "EN",
-    },
-    {
-      idLanguage: 1,
-      name: "Español",
-      shortName: "ES",
-    },
-    {
-      idLanguage: 3,
-      name: "Portugués",
-      shortName: "PO",
-    },
-  ];
+  const urlApi = ROUTES.API_APP_LANGUAGE_GET_ALL;
 
-  const [languages, setLanguages] = useState(initialForm);
+  useEffect(() => {
+    const requestAxios = {
+      method: "get",
+      url: urlApi,
+      responseType: "json",
+      credentials: "include",
+      mode: "no-cors",
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    axios(requestAxios)
+      .then((response) => {
+        console.log(response);
+        /* dispatch({
+          type: TYPES.API_SET_ALL_LANGUAGES,
+          payload: response.data.data,
+        }); */
+      })
+      .catch((e) => {
+        console.log("Catch API >>" + e);
+      })
+      .finally(() => {
+        console.log("Finalizo consulta");
+      });
+  }, []);
+
+  const [languages, setLanguages] = useState(languageInitialState);
   const [selectedLenguage, setSelectedLenguage] = useState(
     i18n.use(LanguageDetector).language
   );

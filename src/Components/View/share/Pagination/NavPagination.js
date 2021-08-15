@@ -3,8 +3,6 @@ import { Container, Pagination, Row, Col } from "react-bootstrap";
 import Icon from "../Icon";
 
 const NavPagination = (props) => {
-  console.log(props.data);
-
   const ListPagination = () => (
     <>
       <Pagination size="sm">
