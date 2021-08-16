@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export const HookExpensive = () => {
+export const HookExpensive = (props) => {
   const r_api_token =
     "WeKHSYaSd1aLTd0K4Qz77kcallnDzyPTmkKKa702SA5L9YEGTfHI8Nbz6LNEJq7Sg55OvbzxUzNHRKGwrGO8xZ2BeR8ehqMSziG8SRJ4QsLASyrBHebqlpSeP61nCNTr8arijxzFRMeRQgl14lk0McXold34LHPiBJU4a9ZWBvsCmglPnbD5MAqfAcDS3Q8cHDOMY9Mmvgpq0CEwFhwHwDPpLgPlGfO7F9S9cQ67cmcpuRNbpFKp97YHphkICll"; //useSelector((state) => state.usuario.dato.api_token);
   const [dato, setDato] = useState([]);
-  const [url, setUrl] = useState(process.env.REACT_APP_EXPENSE_POST_USER_DATE);
+  const [url, setUrl] = useState(props.REACT_APP_EXPENSE_POST_USER_DATE);
   const [datoPagination, setDatoPagination] = useState([]);
   const [datoHead, setDatoHead] = useState({
     idExpense: "Gasto",

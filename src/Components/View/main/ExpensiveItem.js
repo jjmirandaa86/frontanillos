@@ -57,7 +57,11 @@ const ExpensiveItem = (data) => {
       <ListData />
       {isHovering && (
         <>
-          <ExpensiveCard data={datoExpensive} setIsHovering={setIsHovering} />
+          <ExpensiveCard
+            REACT_APP_EXPENSE_PUT_STATE={data.REACT_APP_EXPENSE_PUT_STATE}
+            data={datoExpensive}
+            setIsHovering={setIsHovering}
+          />
         </>
       )}
     </>

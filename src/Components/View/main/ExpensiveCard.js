@@ -19,7 +19,7 @@ const ExpensiveCard = (props) => {
     incrementZoomHeight,
     approveExpense,
     denyExpense,
-  } = HookExpensiveCard(inicialState);
+  } = HookExpensiveCard(props.REACT_APP_EXPENSE_PUT_STATE, inicialState);
 
   return (
     <>

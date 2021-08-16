@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 export const HookExpensiveGraphicsLine = (props) => {
   const [datos, setDatos] = useState([]);
-  let url = process.env.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE;
 
   const titleGraphics = "Total gastos por mes";
   const titleGraphicsX = "Mes";
@@ -18,7 +17,7 @@ export const HookExpensiveGraphicsLine = (props) => {
 
   const cabeceraAxios = {
     method: "post",
-    url: url,
+    url: props.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE,
     data: datosEnviado,
     responseType: "json",
     credentials: "include",

@@ -5,7 +5,7 @@ export default function Logo(props) {
   if (props.nameDoc) {
     logo = "/Media/Img/" + props.nameDoc;
   } else {
-    logo = "/Media/Img/tesalia-cbc-logo-new.png";
+    logo = "/Media/img/tesalia-cbc-logo-new.png";
   }
 
   return (

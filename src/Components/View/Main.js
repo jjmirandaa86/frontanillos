@@ -31,7 +31,17 @@ const MainMain = () => {
           <Row>
             <Col sm={12}>
               <br></br>
-              <Expensive />
+              <Expensive
+                token={token}
+                REACT_APP_EXPENSE_POST_USER_DATE={
+                  jsonApi.route.REACT_APP_API +
+                  jsonApi.route.REACT_APP_EXPENSE_POST_USER_DATE
+                }
+                REACT_APP_EXPENSE_PUT_STATE={
+                  jsonApi.route.REACT_APP_API +
+                  jsonApi.route.REACT_APP_EXPENSE_PUT_STATE
+                }
+              />
             </Col>
           </Row>
           <Row>
@@ -42,6 +52,10 @@ const MainMain = () => {
                 dateFirst={dateFirst}
                 dateEnd={dateEnd}
                 token={token}
+                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
+                  jsonApi.route.REACT_APP_API +
+                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
+                }
               />
             </Col>
             <Col sm={6}>
@@ -51,6 +65,10 @@ const MainMain = () => {
                 dateFirst={dateFirst}
                 dateEnd={dateEnd}
                 token={token}
+                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
+                  jsonApi.route.REACT_APP_API +
+                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
+                }
               />
             </Col>
           </Row>
@@ -62,6 +80,10 @@ const MainMain = () => {
                 dateFirst={dateFirst}
                 dateEnd={dateEnd}
                 token={token}
+                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
+                  jsonApi.route.REACT_APP_API +
+                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
+                }
               />
             </Col>
           </Row>
@@ -71,8 +93,14 @@ const MainMain = () => {
       {/* Muestra la pantalla de Nuevo Expensive */}
       {showWindow === "N" && (
         <NewExpensive
-          urlRouteApi_SAVE={jsonApi.route.REACT_APP_EXPENSE_POST_SAVE}
-          urlRouteApi_SAVEIMG={jsonApi.route.REACT_APP_EXPENSE_POST_SAVE_IMAGE}
+          urlRouteApi_SAVE={
+            jsonApi.route.REACT_APP_API +
+            jsonApi.route.REACT_APP_EXPENSE_POST_SAVE
+          }
+          urlRouteApi_SAVEIMG={
+            jsonApi.route.REACT_APP_API +
+            jsonApi.route.REACT_APP_EXPENSE_POST_SAVE_IMAGE
+          }
           token={token}
           setShowWindow={setShowWindow}
         />

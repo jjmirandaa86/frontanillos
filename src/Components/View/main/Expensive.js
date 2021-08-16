@@ -7,8 +7,9 @@ import RowPerPage from "../share/Pagination/RowPerPage";
 import ShowRowFromTo from "../share/Pagination/ShowRowFromTo";
 import Icon from "../share/Icon";
 
-const Expensive = () => {
-  const { dato, datoHead, datoPagination, handleChangeUrl } = HookExpensive();
+const Expensive = (props) => {
+  const { dato, datoHead, datoPagination, handleChangeUrl } =
+    HookExpensive(props);
 
   return (
     <>
@@ -41,7 +42,10 @@ const Expensive = () => {
             <tr>No hay datos</tr>
           ) : (
             <>
-              <ExpensiveItem data={dato} />
+              <ExpensiveItem
+                REACT_APP_EXPENSE_PUT_STATE={props.REACT_APP_EXPENSE_PUT_STATE}
+                data={dato}
+              />
               <tr>
                 <td colSpan="1">
                   <NavPagination

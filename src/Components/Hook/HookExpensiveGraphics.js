@@ -15,11 +15,9 @@ export const HookExpensiveGraphics = (props) => {
     dateEnd: props.dateEnd,
   };
 
-  let url = process.env.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE;
-
   const cabeceraAxios = {
     method: "post",
-    url: url,
+    url: props.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE,
     data: datosEnviado,
     responseType: "json",
     credentials: "include",

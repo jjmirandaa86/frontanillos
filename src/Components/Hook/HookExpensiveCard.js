@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export const HookExpensiveCard = (inicialState) => {
+export const HookExpensiveCard = (
+  REACT_APP_EXPENSE_PUT_STATE,
+  inicialState
+) => {
   const r_api_token =
     "WeKHSYaSd1aLTd0K4Qz77kcallnDzyPTmkKKa702SA5L9YEGTfHI8Nbz6LNEJq7Sg55OvbzxUzNHRKGwrGO8xZ2BeR8ehqMSziG8SRJ4QsLASyrBHebqlpSeP61nCNTr8arijxzFRMeRQgl14lk0McXold34LHPiBJU4a9ZWBvsCmglPnbD5MAqfAcDS3Q8cHDOMY9Mmvgpq0CEwFhwHwDPpLgPlGfO7F9S9cQ67cmcpuRNbpFKp97YHphkICll"; //useSelector((state) => state.usuario.dato.api_token);
   const [data, setData] = useState(inicialState);
@@ -10,7 +13,7 @@ export const HookExpensiveCard = (inicialState) => {
   //Zoom Img
   const [valorZoom, setValorZoom] = useState(70);
   const [zoomHeight, setZoomHeight] = useState(300);
-  const [url, setUrl] = useState(process.env.REACT_APP_EXPENSE_PUT_STATE);
+  const [url, setUrl] = useState(REACT_APP_EXPENSE_PUT_STATE);
 
   const incrementZoomHeight = (operador) => {
     if (operador === "+") {
