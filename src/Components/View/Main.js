@@ -8,7 +8,6 @@ import Expensive from "./main/Expensive";
 import NewExpensive from "../View/Menu/NewExpensive";
 import FindParameter from "./Menu/FindParameter";
 import ShowUser from "./Menu/ShowUser";
-import jsonApi from "../../json/routesApi.json";
 
 const MainMain = () => {
   const [showWindow, setShowWindow] = useState("M");
@@ -31,80 +30,27 @@ const MainMain = () => {
           <Row>
             <Col sm={12}>
               <br></br>
-              <Expensive
-                token={token}
-                REACT_APP_EXPENSE_POST_USER_DATE={
-                  jsonApi.route.REACT_APP_API +
-                  jsonApi.route.REACT_APP_EXPENSE_POST_USER_DATE
-                }
-                REACT_APP_EXPENSE_PUT_STATE={
-                  jsonApi.route.REACT_APP_API +
-                  jsonApi.route.REACT_APP_EXPENSE_PUT_STATE
-                }
-              />
+              <Expensive />
             </Col>
           </Row>
           <Row>
             <Col sm={6}>
-              <ExpensiveGraphicsTorta
-                idCountry={idCountry}
-                idUser={idUser}
-                dateFirst={dateFirst}
-                dateEnd={dateEnd}
-                token={token}
-                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
-                  jsonApi.route.REACT_APP_API +
-                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
-                }
-              />
+              <ExpensiveGraphicsTorta />
             </Col>
             <Col sm={6}>
-              <ExpensiveGraphics
-                idCountry={idCountry}
-                idUser={idUser}
-                dateFirst={dateFirst}
-                dateEnd={dateEnd}
-                token={token}
-                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
-                  jsonApi.route.REACT_APP_API +
-                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
-                }
-              />
+              <ExpensiveGraphics />
             </Col>
           </Row>
           <Row>
             <Col sm={12}>
-              <ExpensiveGraphicsLine
-                idCountry={idCountry}
-                idUser={idUser}
-                dateFirst={dateFirst}
-                dateEnd={dateEnd}
-                token={token}
-                REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE={
-                  jsonApi.route.REACT_APP_API +
-                  jsonApi.route.REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE
-                }
-              />
+              <ExpensiveGraphicsLine />
             </Col>
           </Row>
         </Container>
       )}
 
       {/* Muestra la pantalla de Nuevo Expensive */}
-      {showWindow === "N" && (
-        <NewExpensive
-          urlRouteApi_SAVE={
-            jsonApi.route.REACT_APP_API +
-            jsonApi.route.REACT_APP_EXPENSE_POST_SAVE
-          }
-          urlRouteApi_SAVEIMG={
-            jsonApi.route.REACT_APP_API +
-            jsonApi.route.REACT_APP_EXPENSE_POST_SAVE_IMAGE
-          }
-          token={token}
-          setShowWindow={setShowWindow}
-        />
-      )}
+      {showWindow === "N" && <NewExpensive setShowWindow={setShowWindow} />}
       {/* Muestra la pantalla de filtro */}
       {showWindow === "F" && <FindParameter setShowWindow={setShowWindow} />}
       {/* Muestra la pantalla de datos del usuario */}

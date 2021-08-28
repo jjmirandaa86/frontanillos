@@ -2,7 +2,7 @@ import { ActionTypes } from "../Constants/ActionTypes";
 
 const initialState = [];
 
-export const locationReducer = (state = initialState, { type, payload }) => {
+export const locationReducers = (state = initialState, { type, payload }) => {
   console.log(type);
   console.log(payload);
   switch (type) {

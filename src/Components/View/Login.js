@@ -2,41 +2,17 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { HookLogin } from "../../Hook/HookLogin";
-import * as CONSTANTE from "../../../Helpers/Constantes";
+import { HookLogin } from "../Hook/HookLogin";
 
 //Componentes Grafico UI
-import Cargando from "../share/Cargando";
-import Fondo from "../share/Fondo";
-import LoginForm from "./LoginForm";
-import FormFooter from "../share/FormFooter";
-import FormHead from "../share/FormHead";
-import AlertaInformativa from "../share/AlertaInformativa";
-
-//Parametros por de los datos.
-const initialForm = {
-  email: "",
-  password: "",
-};
-
-const validationsForm = (form) => {
-  let errors = {};
-  if (!form.email.trim()) {
-    errors.email = "El campo email es requerido";
-  } else if (!CONSTANTE.REGEXEMAIL.test(form.email.trim())) {
-    errors.email =
-      "El campo email es incorrecto, favor valide. Ejemplo: jmiranda@cbc.co";
-  }
-
-  if (!form.password.trim()) {
-    errors.password = "El campo password es requerido";
-  } else if (!CONSTANTE.REGEXPASSWORD.test(form.password.trim())) {
-    errors.password =
-      "El campo contraseña es incorrecto. Debe contener al menos un número 0-9, al menos una mayúscula, al menos una minúscula, al menos un carácter especial (.,*!?¿¡/#$%&), Longitud mínima de 8 caracteres, 64 máxima, No acepta espacios";
-  }
-
-  return errors;
-};
+import Cargando from "./share/Cargando";
+import Fondo from "./share/Fondo";
+import LoginForm from "./login/LoginForm";
+import FormFooter from "./share/FormFooter";
+import FormHead from "./share/FormHead";
+import AlertaInformativa from "./share/AlertaInformativa";
+import "../../App.css";
+import { styleApp } from "../../Helpers/Constantes";
 
 const Login = () => {
   const {
@@ -49,7 +25,7 @@ const Login = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-  } = HookLogin(initialForm, validationsForm);
+  } = HookLogin();
 
   const { t } = useTranslation();
 
@@ -75,9 +51,9 @@ const Login = () => {
         <div className="container">
           <div className="vh-100 justify-content-center align-items-center formLogin">
             <Card
-              bg={process.env.REACT_APP_CONFIGURACION_FONDO_BG}
+              bg={styleApp.GENERAL.APP_GENERAL_COLOR_FONDO}
               text={
-                process.env.REACT_APP_CONFIGURACION_FONDO_LETRA.toLowerCase() ===
+                styleApp.GENERAL.APP_GENERAL_COLOR_LETRA.toLowerCase() ===
                 "light"
                   ? "dark"
                   : "white"
@@ -86,7 +62,7 @@ const Login = () => {
               <FormHead />
               <Card.Body>
                 <Card.Title className="text-center">
-                  {t("app.componente.login.titulo")}
+                  {"Inicia Session"}
                 </Card.Title>
                 <Card.Text>
                   <LoginForm

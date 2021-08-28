@@ -1,13 +1,33 @@
+import { useEffect } from "react";
 import { Row, Form, Col, Alert, FloatingLabel } from "react-bootstrap";
 import IconButton from "../share/IconButton";
+import { HookFilter } from "../../Hook/HookFilter";
 
 const FindParameterItems = (props) => {
-  const handleSave = () => {
-    alert("guardar");
-  };
+  const { typeEntry, states, handleSave } = HookFilter();
+  // const ComboTypeEntry = [];
+
+  // useEffect(
+  //   (ComboTypeEntry) => {
+  //     ComboTypeEntry = () => {
+  //       <select>
+  //         {typeEntry.map(function (el) {
+  //           return <option value={el.idTypeEntry}>{el.name}</option>;
+  //         })}
+  //       </select>;
+  //     };
+  //   },
+  //   [typeEntry]
+  // );
+
+  // console.log("hola desde fiend");
+  // console.log(typeEntry);
+  // console.log(states);
 
   return (
     <>
+      {/* {typeEntry && <ComboTypeEntry />}  */}
+
       <Form>
         <Row>
           <Col xs={12} sm={6} lg={6}>

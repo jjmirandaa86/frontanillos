@@ -7,7 +7,7 @@ export default function Fondo() {
   return (
     <>
       <Image
-        src="/Media/Img/fondo.jpg"
+        src="/Media/img/fondo.jpg"
         //imageStyle={{ resizeMode: "stretch" }}
         style={{
           height: tamanoHeight,

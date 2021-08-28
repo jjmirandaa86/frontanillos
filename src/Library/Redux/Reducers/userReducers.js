@@ -1,18 +1,25 @@
-import { TYPES } from "../Actions/UserActions";
+import { TYPES } from "../Actions/userActions";
 
-const userInitialState = {
-  id: 500857,
-  idCountry: "EC",
-  nombre: "Jefferson Miranda",
+export const userInitialState = {
+  info: {},
+  session: {},
+  ubication: {},
 };
 
-export function userReducers(state, action) {
+export function userReducers(state = userInitialState, action) {
+  console.log(action.type);
+  console.log(action.payload);
+
+  console.log(state);
+
   switch (action.type) {
-    case TYPES.INICIALIZA: {
-      return { ...state, settings: userInitialState };
-    }
+    case TYPES.SET_USER_LOGIN_INFO:
+      return action.payload;
+
+    case TYPES.USER_CLOSE_SESSION:
+      return action.payload;
 
     default:
-      return { state };
+      return state;
   }
 }

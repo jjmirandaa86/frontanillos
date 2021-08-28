@@ -31,6 +31,20 @@ export const getHoraActual = () => {
 export const getFechaActual = () => {
   const fecha = new Date();
   return (
-    fecha.getDate() + "." + (fecha.getMonth() + 1) + "." + fecha.getFullYear()
+    ("0" + fecha.getDate()).slice(-2) +
+    "." +
+    ("0" + (fecha.getMonth() + 1)).slice(-2) +
+    "." +
+    fecha.getFullYear()
   );
+};
+
+export const getPrimerDiaMes = () => {
+  var date = new Date();
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+};
+
+export const getUltimoDiaMes = () => {
+  var date = new Date();
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0);
 };

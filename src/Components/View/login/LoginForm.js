@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Alert, Badge } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { styleApp } from "../../../Helpers/Constantes";
 
 export default function LoginForm({
   handleChange,
@@ -15,28 +16,28 @@ export default function LoginForm({
     <>
       <Form>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>{t("app.componente.login.email.titulo")}</Form.Label>
+          <Form.Label>{"Codigo colaborador:"}</Form.Label>
           <Form.Control
-            type="email"
-            placeholder={t("app.componente.login.email.placeholder")}
-            name="email"
+            type="number"
+            placeholder={"Ingresa tu codigo de colaborador"}
+            name="idUser"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.email}
+            value={form.idUser}
           />
-          {errors.email && (
+          {errors.idUser && (
             <Form.Text className="text-muted">
-              <Alert variant={process.env.REACT_APP_CONFIGURACION_FONDO_ALERTA}>
-                {errors.email}
+              <Alert variant={styleApp.ALERT.APP_ALERT_COLOR}>
+                {errors.idUser}
               </Alert>
             </Form.Text>
           )}
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>{t("app.componente.login.contrasena.titulo")}</Form.Label>
+          <Form.Label>{"Contraseña: "}</Form.Label>
           <Form.Control
             type="password"
-            placeholder={t("app.componente.login.contrasena.placeholder")}
+            placeholder={"Ingresa tu contraseña"}
             name="password"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -44,24 +45,22 @@ export default function LoginForm({
           />
           {errors.password && (
             <Form.Text className="text-muted">
-              <Alert variant={process.env.REACT_APP_CONFIGURACION_FONDO_ALERTA}>
+              <Alert variant={styleApp.ALERT.APP_ALERT_COLOR}>
                 {errors.password}
               </Alert>
             </Form.Text>
           )}
-          <Form.Text>
-            {t("app.componente.login.contrasena.infoAdicional")}
-          </Form.Text>
+          <Form.Text>{"No entregues tu contraseña a nadie"}</Form.Text>
         </Form.Group>
         <Form.Group
           className="d-flex justify-content-end"
           controlId="formBasicBotonIngresar"
         >
           <Button
-            variant={process.env.REACT_APP_CONFIGURACION_FONDO_BOTON}
+            variant={styleApp.BUTTON.APP_BUTTON_COLOR}
             onClick={handleSubmit}
           >
-            {t("app.componente.login.boton.ingresar")}
+            {"Ingresar"}
           </Button>
         </Form.Group>
       </Form>

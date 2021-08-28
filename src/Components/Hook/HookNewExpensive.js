@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import * as CONSTANTE from "../../Helpers/Constantes";
+import { regExpresion } from "../../Helpers/Constantes";
 
 export const HookNewExpensive = (props, initialForm) => {
   const [form, setForm] = useState(initialForm);
@@ -72,9 +72,7 @@ export const HookNewExpensive = (props, initialForm) => {
     let errors = {};
 
     //Validacion RUC / CEDULA
-    if (!form.idSupplier.trim()) {
-      errors.idSupplier = "Dato requerido.";
-    } else if (!CONSTANTE.REGEXNUMBERENTERO.test(form.idSupplier.trim())) {
+    if (!regExpresion.NUMBERENTERO.test(form.idSupplier.trim())) {
       errors.idSupplier = "Favor valide, Solo acepta numeros.";
     } else if (form.idSupplier.length != 10 && form.idSupplier.length != 13) {
       errors.idSupplier = "Debe tener 10 o 13 digitos.";
@@ -83,14 +81,14 @@ export const HookNewExpensive = (props, initialForm) => {
     //Validacion Nombre Proveedor
     if (!form.nameSupplier.trim()) {
       errors.nameSupplier = "Dato requerido.";
-    } else if (!CONSTANTE.REGEXNAME.test(form.nameSupplier.trim())) {
+    } else if (!regExpresion.NAME.test(form.nameSupplier.trim())) {
       errors.nameSupplier = "Favor valide, Solo acepta letras.";
     }
 
     //Validacion Serie de la factura
     if (!form.serieInvoice.trim()) {
       errors.serieInvoice = "Dato requerido.";
-    } else if (!CONSTANTE.REGEXNUMBERYGUION.test(form.serieInvoice.trim())) {
+    } else if (!regExpresion.NUMBERYGUION.test(form.serieInvoice.trim())) {
       errors.serieInvoice = "Favor valide, Solo acepta numeros y Guion";
     }
 
@@ -100,23 +98,31 @@ export const HookNewExpensive = (props, initialForm) => {
     }
 
     //Validacion del monto
-    if (!form.amount > 0) {
-      errors.amount = "Valor debe ser mayor a cero.";
-    } else if (!CONSTANTE.REGEXNUMBERFLOAT.test(form.amount)) {
+    if (!form.dateInvoice.trim()) {
+      //!form.amount > 0
+      //errors.amount = "Solo acepta punto, valor debe ser mayor a cero.";
+      errors.amount = "Dato requerido.";
+    } else if (!regExpresion.NUMBERFLOAT.test(form.amount)) {
+      errors.amount = "Favor valide, Solo acepta numeros y punto";
+    }
+
+    if (!regExpresion.NUMBERFLOAT.test(form.amount)) {
       errors.amount = "Favor valide, Solo acepta numeros y punto";
     }
 
     //Validacion de la imagen
+    /*
     if (!file) {
       errors.image = "Dato requerido.";
     }
-
+*/
     return errors;
   };
 
   //guarda File
   const uploadFile = () => {
-    //construir la Url de la imagen y directorio
+    console.log("entri");
+    //construir la Url de la| imagen y directorio
     const dateFile = new Date();
     const month =
       dateFile.getMonth() + 1 < 10
@@ -152,11 +158,15 @@ export const HookNewExpensive = (props, initialForm) => {
       },
     };
 
+    console.log(cabeceraAxios);
+    console.log(datosEnviado);
+
     setLoading(true);
     axios(cabeceraAxios)
       .then((response) => {
         //Si consulta con exito
         if (response.status === 200) {
+          console.log(response);
           if (response.data.exito) {
             saveExpensive(response.data.urlFile);
           }

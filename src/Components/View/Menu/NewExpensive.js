@@ -22,7 +22,7 @@ const initialForm = {
   nameSupplier: "",
   serieInvoice: "",
   dateInvoice: "1900/01/01",
-  amount: 0,
+  amount: "",
   image: "",
   state: "A",
 };
@@ -69,11 +69,7 @@ const NewExpensive = (props) => {
                   {/* Type de Gasto*/}
                   <Row>
                     <Col xs={12} sm={12} lg={12}>
-                      <FloatingLabel
-                        controlId="ExpensiveFormIdTypeEntry"
-                        label="Tipo de Gasto"
-                        className="mb-1"
-                      >
+                      <FloatingLabel label="Tipo de Gasto" className="mb-1">
                         <Form.Select
                           aria-label="Floating label select example"
                           name="idTypeEntry"
@@ -96,7 +92,7 @@ const NewExpensive = (props) => {
                       <Form.Floating className="mb-1">
                         <Form.Control
                           id="floatingInputIdSupplier"
-                          type="text"
+                          type="number"
                           name="idSupplier"
                           onChange={handleChange}
                           value={form.idSupplier}
@@ -210,9 +206,9 @@ const NewExpensive = (props) => {
                     <Col xs={12} sm={6} lg={6}>
                       <Form.Floating className="mb-1">
                         <Form.Control
-                          id="floatingInputAmount"
+                          id="floatingInputc"
                           type="number"
-                          placeholder="15.677"
+                          placeholder="0"
                           name="amount"
                           onChange={handleChange}
                           value={form.amount}
@@ -234,7 +230,7 @@ const NewExpensive = (props) => {
                     </Col>
                     {/* Foto*/}
                     <Col xs={12} sm={6} lg={6}>
-                      <Form.Group controlId="formFileSm" className="mb-3">
+                      <Form.Group className="mb-3">
                         <Form.Control
                           onChange={() => setFiles(inputRef.current.files[0])}
                           ref={inputRef}

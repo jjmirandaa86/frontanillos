@@ -1,27 +1,43 @@
 import { useState, useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { ROUTES } from "../../RoutesFront/RoutesApi";
+import { routesApi } from "../../Helpers/Constantes";
+//Agrego los REDUX
 import { TYPES } from "../../Library/Redux/Actions/languageActions";
 import {
   languageInitialState,
   languageReducers,
 } from "../../Library/Redux/Reducers/languageReducers";
 
+//Traduccion
+import { useTranslation } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+
 export const HookLanguage = () => {
   const { i18n } = useTranslation();
-  //const language = useSelector((state) => state.language);
-  //const dispatch = useDispatch();
-  //const [state, dispatch] = useReducer(languageReducers, languageInitialState);
+  const dispatch = useDispatch();
+  const languages = useSelector((store) => store.language);
 
-  const urlApi = ROUTES.API_APP_LANGUAGE_GET_ALL;
+  const [selectedLenguage, setSelectedLenguage] = useState(
+    i18n.use(LanguageDetector).language
+  );
 
+  //Load state inicial
   useEffect(() => {
+    loadLanguage();
+  }, []);
+
+  //Cuando Cambio el idioma
+  const handleLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+    setSelectedLenguage(event.target.value);
+  };
+
+  //Para cargar desde la API
+  const loadLanguage = async () => {
     const requestAxios = {
       method: "get",
-      url: urlApi,
+      url: routesApi.REACT_APP_API + routesApi.REACT_APP_LANGUAGE_ALL,
       responseType: "json",
       credentials: "include",
       mode: "no-cors",
@@ -30,30 +46,13 @@ export const HookLanguage = () => {
       },
     };
 
-    axios(requestAxios)
-      .then((response) => {
-        console.log(response);
-        /* dispatch({
-          type: TYPES.API_SET_ALL_LANGUAGES,
-          payload: response.data.data,
-        }); */
-      })
-      .catch((e) => {
-        console.log("Catch API >>" + e);
-      })
-      .finally(() => {
-        console.log("Finalizo consulta");
+    const response = await axios(requestAxios);
+    if (response.status === 200) {
+      dispatch({
+        type: TYPES.INICIALIZA_LENGUAGE,
+        payload: response.data.data,
       });
-  }, []);
-
-  const [languages, setLanguages] = useState(languageInitialState);
-  const [selectedLenguage, setSelectedLenguage] = useState(
-    i18n.use(LanguageDetector).language
-  );
-
-  const handleLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
-    setSelectedLenguage(event.target.value);
+    }
   };
 
   return {

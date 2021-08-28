@@ -8,9 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cargando from "./Components/View/share/Cargando";
 import Main from "./Components/View/Main";
 import NewExpensive from "./Components/View/Menu/NewExpensive";
-import LoginMain from "./Components/View/login/LoginMain";
-import Contador from "./Components/View/share/Contador";
-import ContadorLanguage from "./Components/View/share/ContadorLanguage";
+import Login from "./Components/View/Login";
+import Language from "./Components/View/share/Language";
+import { Init } from "./Components/View/Init";
+import AlertaInformativa from "./Components/View/share/AlertaInformativa";
+import FindParameter from "./Components/View/Menu/FindParameter";
 
 function App() {
   /*  const [isAuth, setIsAuth] = useState(null);
@@ -30,13 +32,15 @@ function App() {
       <Suspense fallback={<Cargando />}>
         <Router>
           <Switch>
+            <Route exact path="/" children={<Init />} />
             <Route exact path="/main" children={<Main />} />
+            <Route exact path="/login" children={<Login />} />
+            <Route exact path="/filtro" children={<FindParameter />} />
+            <Route exact path="/alerta" children={<AlertaInformativa />} />
 
             {/*
-            <Route exact path="/" children={<Contador />} />
             <Route exact path="/1" children={<ContadorLanguage />} />
              
-            <Route exact path="/" children={<LoginMain />} />
             <Route exact path="/new" children={<NewExpensive />} />
             
 
