@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -28,6 +29,7 @@ const Login = () => {
   } = HookLogin();
 
   const { t } = useTranslation();
+  const style = useSelector((store) => store.general.app.style);
 
   return (
     <>
@@ -51,12 +53,9 @@ const Login = () => {
         <div className="container">
           <div className="vh-100 justify-content-center align-items-center formLogin">
             <Card
-              bg={styleApp.GENERAL.APP_GENERAL_COLOR_FONDO}
+              bg={style.cards.bolor}
               text={
-                styleApp.GENERAL.APP_GENERAL_COLOR_LETRA.toLowerCase() ===
-                "light"
-                  ? "dark"
-                  : "white"
+                style.cards.letters.toLowerCase() === "light" ? "dark" : "white"
               }
             >
               <FormHead />

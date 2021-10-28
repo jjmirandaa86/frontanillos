@@ -26,11 +26,11 @@ export const messageInitialState = {
   ],
   show: {
     type: "E",
-    title: "",
-    date: "",
-    hour: "",
-    body: "",
-    timeShow: 0,
+    title: "xxx",
+    date: "222",
+    hour: "3232",
+    body: "2323",
+    timeShow: 3456789,
   },
 };
 

@@ -1,13 +1,15 @@
-import { HookFondo } from "../../Hook/HookFondo";
 import { Image } from "react-bootstrap";
+import { HookFondo } from "../../Hook/HookFondo";
+import { useSelector } from "react-redux";
 
 export default function Fondo() {
   const { tamanoHeight, tamanoWidth } = HookFondo();
+  const ruta = useSelector((store) => store.general.app.img);
 
   return (
     <>
       <Image
-        src="/Media/img/fondo.jpg"
+        src={ruta + "fondo.jpg"}
         //imageStyle={{ resizeMode: "stretch" }}
         style={{
           height: tamanoHeight,

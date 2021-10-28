@@ -16,6 +16,7 @@ export const routesApi = {
   REACT_APP_EXPENSE_POST_COUNT_MONTH_TOT_USER_DATE: "expense/counttotalmonth",
   REACT_APP_EXPENSE_POST_USER_DATE: "expense/idUserDate",
   REACT_APP_EXPENSE_PUT_STATE: "expense/state",
+  REACT_APP_SERVIDOR_REPO_IMAGE: "http://localhost/apianillos/public/Img",
   REACT_APP_LANGUAGE: "******LANGUAGE*********",
   REACT_APP_LANGUAGE_ALL: "language/all",
   REACT_APP_USER: "******USER*********",
@@ -24,23 +25,4 @@ export const routesApi = {
   REACT_APP_TYPEENTRY_COUNTRY: "typeentry/country/",
   REACT_APP_STATE: "******STATUS*********",
   REACT_APP_STATE_TABLE_IDCOUNTRY: "state/tableIdCountry",
-};
-
-export const styleApp = {
-  CARDS: {
-    APP_CARDS_COLOR_FONDO: "dark",
-  },
-  BADGE: {
-    APP_BADGE_COLOR_FONDO: "Light",
-  },
-  BUTTON: {
-    APP_BUTTON_COLOR: "primary",
-  },
-  ALERT: {
-    APP_ALERT_COLOR: "danger",
-  },
-  GENERAL: {
-    APP_GENERAL_COLOR_FONDO: "dark",
-    APP_GENERAL_COLOR_LETRA: "dark",
-  },
 };

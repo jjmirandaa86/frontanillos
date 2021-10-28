@@ -28,17 +28,17 @@ function App() {
   }, [isAuth]); */
 
   return (
-    <div className="App">
-      <Suspense fallback={<Cargando />}>
-        <Router>
-          <Switch>
-            <Route exact path="/" children={<Init />} />
-            <Route exact path="/main" children={<Main />} />
-            <Route exact path="/login" children={<Login />} />
-            <Route exact path="/filtro" children={<FindParameter />} />
-            <Route exact path="/alerta" children={<AlertaInformativa />} />
-
-            {/*
+    <>
+      <div className="App">
+        <Suspense fallback={<Cargando />}>
+          <Router>
+            <Switch>
+              <Route exact path="/main" children={<Main />} />
+              <Route exact path="/login" children={<Login />} />
+              <Route exact path="/filtro" children={<FindParameter />} />
+              <Route exact path="/alerta" children={<AlertaInformativa />} />
+              <Route exact path="/" children={<Init />} />
+              {/*
             <Route exact path="/1" children={<ContadorLanguage />} />
              
             <Route exact path="/new" children={<NewExpensive />} />
@@ -50,12 +50,12 @@ function App() {
             <Route exact path="/login" children={<Login />} />
             <Route exact path="/main" children={<Main />} />
             <Route path="*" component={Error404} /> */}
-          </Switch>
-
-          {/* <ProtectedRoute path="/mapa" component={Mapa} isAuth={isAuth} /> */}
-        </Router>
-      </Suspense>
-    </div>
+            </Switch>
+            {/* <ProtectedRoute path="/mapa" component={Mapa} isAuth={isAuth} /> */}
+          </Router>
+        </Suspense>
+      </div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Button, Form, Alert, Badge } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { styleApp } from "../../../Helpers/Constantes";
 
 export default function LoginForm({
   handleChange,
@@ -11,6 +11,7 @@ export default function LoginForm({
   errors,
 }) {
   const { t } = useTranslation();
+  const style = useSelector((store) => store.general.app.style);
 
   return (
     <>
@@ -27,9 +28,7 @@ export default function LoginForm({
           />
           {errors.idUser && (
             <Form.Text className="text-muted">
-              <Alert variant={styleApp.ALERT.APP_ALERT_COLOR}>
-                {errors.idUser}
-              </Alert>
+              <Alert variant={style.alert.colorError}>{errors.idUser}</Alert>
             </Form.Text>
           )}
         </Form.Group>
@@ -45,9 +44,7 @@ export default function LoginForm({
           />
           {errors.password && (
             <Form.Text className="text-muted">
-              <Alert variant={styleApp.ALERT.APP_ALERT_COLOR}>
-                {errors.password}
-              </Alert>
+              <Alert variant={style.alert.colorError}>{errors.password}</Alert>
             </Form.Text>
           )}
           <Form.Text>{"No entregues tu contraseña a nadie"}</Form.Text>
@@ -56,10 +53,7 @@ export default function LoginForm({
           className="d-flex justify-content-end"
           controlId="formBasicBotonIngresar"
         >
-          <Button
-            variant={styleApp.BUTTON.APP_BUTTON_COLOR}
-            onClick={handleSubmit}
-          >
+          <Button variant={style.button.color} onClick={handleSubmit}>
             {"Ingresar"}
           </Button>
         </Form.Group>

@@ -16,6 +16,25 @@ export const generalInitialState = {
   states: [],
   app: {
     title: "App",
+    ico: "media/ico/",
+    img: "media/img/",
+    traslations: "json/translations",
+    style: {
+      cards: {
+        color: "dark",
+        letters: "dark",
+      },
+      badge: {
+        color: "Light",
+      },
+      button: {
+        color: "primary",
+      },
+      alert: {
+        colorSuccess: "primary",
+        colorError: "danger",
+      },
+    },
   },
   money: {},
 };

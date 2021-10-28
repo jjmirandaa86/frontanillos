@@ -1,11 +1,14 @@
 import { Card } from "react-bootstrap";
-
+import { routesPublic } from "../../../Helpers/Constantes";
+import { useSelector } from "react-redux";
 export default function Logo(props) {
+  const ruta = useSelector((store) => store.general.app.img);
+
   let logo = "";
   if (props.nameDoc) {
-    logo = "/Media/Img/" + props.nameDoc;
+    logo = ruta + props.nameDoc;
   } else {
-    logo = "/Media/img/tesalia-cbc-logo-new.png";
+    logo = ruta + "tesalia-cbc-logo-new.png";
   }
 
   return (
